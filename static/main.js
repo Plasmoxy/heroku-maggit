@@ -2,7 +2,7 @@
 $(function() {
   console.log("=== main.js running ===")
 
-  let updatews = new WebSocket("ws://localhost:7000/websocket")
+  let updatews = new WebSocket(window.location.host + ":7000/websocket")
 
   let updatetimer
 
