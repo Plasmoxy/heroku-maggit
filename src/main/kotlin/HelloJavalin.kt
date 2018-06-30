@@ -30,7 +30,7 @@ fun main(args: Array<String>) {
 		it.html(initStr)
 	}
 
-	app.ws("/websocket") { ws ->
+	app.ws("/timews") { ws ->
 		
 		ws.onConnect { session ->
 			println("WEBSOCKET : ${session.remoteAddress} connected")

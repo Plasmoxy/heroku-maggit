@@ -10,8 +10,7 @@ function getWSWithProtocol() {
 $(function() {
   console.log("=== main.js running ===")
 
-  let updatews = new WebSocket(getWSWithProtocol() + window.location.host + "/websocket")
-
+  let updatews = new WebSocket(getWSWithProtocol() + window.location.host + "/timews")
   let updatetimer
 
   updatews.onopen = () => {
@@ -34,5 +33,4 @@ $(function() {
   updatews.onerror = (err) => {
 
   }
-
 })
