@@ -28,6 +28,9 @@ fun main(args: Array<String>) {
 		var initStr = File("static/index.html").readText()
 		
 		it.html(initStr)
+		
+	}.get("/readCyka") {
+		it.result(File("a.txt").readText())
 	}
 
 	app.ws("/timews") { ws ->
@@ -55,10 +58,6 @@ fun main(args: Array<String>) {
 			println("WEBSOCKET : Error -> ${throwable.message}")
 		}
 		
-	}
-
-	app.get("/readCyka") {
-		it.result(File("a.txt").readText())
 	}
 	
 }
