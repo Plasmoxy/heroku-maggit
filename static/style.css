@@ -6,6 +6,11 @@
 	text-align: center;
 }
 
+.bigred {
+	color: #ff007a;
+	font-size: 400%;
+}
+
 body {
 	background: #111;
 	color: white;
