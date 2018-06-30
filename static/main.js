@@ -1,8 +1,16 @@
 
+function getWSWithProtocol() {
+  if (window.protocol == "https:") {
+    return "wss://"
+  } else {
+    return "ws://"
+  }
+}
+
 $(function() {
   console.log("=== main.js running ===")
 
-  let updatews = new WebSocket("ws://" + window.location.host + "/websocket")
+  let updatews = new WebSocket(getWSWithProtocol() + window.location.host + "/websocket")
 
   let updatetimer
 
