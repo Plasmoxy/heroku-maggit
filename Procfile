@@ -1,1 +1,1 @@
-web: java -cp -jar ./build/libs/maggitheroku-1.0.jar
+web: java -jar ./build/libs/maggitheroku-1.0.jar
