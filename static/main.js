@@ -1,6 +1,6 @@
 
 function getWSWithProtocol() {
-  if (window.protocol == "https:") {
+  if (window.location.protocol == "https:") {
     return "wss://"
   } else {
     return "ws://"
