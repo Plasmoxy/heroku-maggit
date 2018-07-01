@@ -36,28 +36,48 @@ fun main(args: Array<String>) {
 	app.ws("/timews") { ws ->
 		
 		ws.onConnect { session ->
-			println("WEBSOCKET : ${session.remoteAddress} connected")
+			println("ws:timews : ${session.remoteAddress} connected")
 		}
 		
 		ws.onMessage { session, msg ->
-			println("WEBSOCKET : received: $msg")
+			println("ws:timews : received: $msg")
 			
 			if (msg == "getTime") {
 				val time = SimpleDateFormat("HH:mm:ss").format(Date())
-				println("WEBSOCKET : responding with time -> $time")
+				println("ws:timews : responding with time -> $time")
 				session.send(time)
 			}
 			
 		}
 		
 		ws.onClose { session, statusCode, reason ->
-			println("WEBSOCKET : closed")
+			println("ws:timews : ${session.remoteAddress} disconnected")
 		}
 		
 		ws.onError { session, throwable ->
-			println("WEBSOCKET : Error -> ${throwable.message}")
+			println("ws:timews : Error -> ${throwable.message}")
 		}
 		
+	}
+
+	app.ws("/echo") {
+
+		it.onConnect {
+			println("ws:echo : ${it.remoteAddress} connected")
+		}
+
+		it.onMessage { session, msg ->
+			session.send(msg)
+		}
+
+		it.onClose { sess, status, reason ->
+			println("ws:echo : ${sess.remoteAddress} disconected")
+		}
+
+		it.onError { session, throwable ->
+			println("ws:timews : Error -> ${throwable.message}")
+		}
+
 	}
 	
 }
