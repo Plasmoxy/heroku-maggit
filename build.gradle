@@ -13,6 +13,9 @@ group 'io.github.plasmoxy'
 version '1.0'
 
 apply plugin: 'kotlin'
+apply plugin: 'application'
+
+mainClassName = 'HelloJavalinKt'
 
 repositories {
 	mavenCentral()
@@ -31,6 +34,8 @@ compileTestKotlin {
 	kotlinOptions.jvmTarget = "1.8"
 }
 
+
+// for heroku
 task stage {
 	dependsOn build
 }
