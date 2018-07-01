@@ -2,7 +2,7 @@ import io.javalin.Javalin
 import io.javalin.embeddedserver.Location
 import java.io.File
 import java.text.SimpleDateFormat
-import java.util.Date
+import java.util.*
 
 object ResLoader {
 	fun read(name: String): String {
@@ -43,9 +43,14 @@ fun main(args: Array<String>) {
 			println("ws:timews : received: $msg")
 			
 			if (msg == "getTime") {
-				val time = SimpleDateFormat("HH:mm:ss").format(Date())
-				println("ws:timews : responding with time -> $time")
-				session.send(time)
+
+				val cal = Calendar.getInstance()
+				cal.time = Date()
+				cal.add(Calendar.HOUR_OF_DAY, 2)
+				val outTime = SimpleDateFormat("HH:mm:ss").format(cal.time)
+
+				println("ws:timews : responding with time -> $outTime")
+				session.send(outTime)
 			}
 			
 		}
